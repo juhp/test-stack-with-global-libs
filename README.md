@@ -10,7 +10,7 @@ The problem should be reproducible a fedora:43 container:
 :
 # git clone this/repo
 # cd here
-# stack build
+# stack --resolver lts-23 build
 ```
 
 Though I have been using a Fedora toolbox container to share
@@ -26,3 +26,5 @@ attoparsec-aeson           > private dependencies:
 attoparsec-aeson           > attoparsec ==0.14.4
 attoparsec-aeson           >
 ```
+
+It should also produce with fedora:42 (or fedora:41) and `--resolver lts-22`.
