@@ -1,0 +1,26 @@
+name: check
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-24.10
+    name: stack-build
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.stack
+            ~/.stackage/curator/cache
+          key: ${{ runner.os }}-stackage-nightly-${{ hashFiles('**/build-constraints.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-
+      - run: sudo apt-get -y install haskell-stack ghc libghc-attoparsec-aeson-dev
+      - run: stack --system-ghc setup 9.6.6
+      - run: stack --system-ghc --resolver lts-22 build
