@@ -2,7 +2,7 @@
 
 For testing https://github.com/commercialhaskell/stack/issues/6661
 
-The problem should be reproducible a fedora:43 container:
+The problem should be reproducible in a fedora:43 container:
 
 ```
 # dnf install ghc stack git-core ghc-attoparsec-aeson-devel
@@ -27,4 +27,4 @@ attoparsec-aeson           > attoparsec ==0.14.4
 attoparsec-aeson           >
 ```
 
-It should also produce with fedora:42 (or fedora:41) and `--resolver lts-22`.
+It should also reproduce with fedora:42 (or fedora:41) with `--resolver lts-22`.
