@@ -23,6 +23,7 @@ jobs:
           key: ${{ runner.os }}-stackage-nightly-${{ hashFiles('**/build-constraints.yaml') }}
           restore-keys: |
             ${{ runner.os }}-
+      - run: apt-get update -qq -y
       - run: apt-get -y install haskell-stack ghc libghc-attoparsec-aeson-dev
       - run: stack --system-ghc setup 9.6.6
       - run: stack --system-ghc --resolver lts-22 build
